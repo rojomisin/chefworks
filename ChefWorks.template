@@ -1,0 +1,69 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+
+  "Description" : "AWS CloudFormation Sample Template OpsWorks: Launches a Chef Automate OpsWorks stack : opsworks-cm.us-west-2.amazonaws.com",
+
+  "Mappings" : {
+    "Region2Principal" : {
+      "us-east-1"      : { "EC2Principal" : "ec2.amazonaws.com", "OpsWorksPrincipal" : "opsworks.amazonaws.com" },
+      "us-west-2"      : { "EC2Principal" : "ec2.amazonaws.com", "OpsWorksPrincipal" : "opsworks.amazonaws.com" },
+      "us-west-1"      : { "EC2Principal" : "ec2.amazonaws.com", "OpsWorksPrincipal" : "opsworks.amazonaws.com" },
+      "eu-west-1"      : { "EC2Principal" : "ec2.amazonaws.com", "OpsWorksPrincipal" : "opsworks.amazonaws.com" },
+      "eu-west-2"      : { "EC2Principal" : "ec2.amazonaws.com", "OpsWorksPrincipal" : "opsworks.amazonaws.com" },
+      "ap-southeast-1" : { "EC2Principal" : "ec2.amazonaws.com", "OpsWorksPrincipal" : "opsworks.amazonaws.com" },
+      "ap-northeast-1" : { "EC2Principal" : "ec2.amazonaws.com", "OpsWorksPrincipal" : "opsworks.amazonaws.com" },
+      "ap-northeast-2" : { "EC2Principal" : "ec2.amazonaws.com", "OpsWorksPrincipal" : "opsworks.amazonaws.com" },
+      "ap-southeast-2" : { "EC2Principal" : "ec2.amazonaws.com", "OpsWorksPrincipal" : "opsworks.amazonaws.com" },
+      "ap-south-1"     : { "EC2Principal" : "ec2.amazonaws.com", "OpsWorksPrincipal" : "opsworks.amazonaws.com" },
+      "us-east-2"      : { "EC2Principal" : "ec2.amazonaws.com", "OpsWorksPrincipal" : "opsworks.amazonaws.com" },
+      "ca-central-1"   : { "EC2Principal" : "ec2.amazonaws.com", "OpsWorksPrincipal" : "opsworks.amazonaws.com" },
+      "sa-east-1"      : { "EC2Principal" : "ec2.amazonaws.com", "OpsWorksPrincipal" : "opsworks.amazonaws.com" },
+      "cn-north-1"     : { "EC2Principal" : "ec2.amazonaws.com.cn", "OpsWorksPrincipal" : "opsworks.amazonaws.com.cn" },
+      "eu-central-1"   : { "EC2Principal" : "ec2.amazonaws.com", "OpsWorksPrincipal" : "opsworks.amazonaws.com" }
+    }
+
+  },
+
+  "Resources": {
+
+    "MyChefStack": {
+      "Type": "AWS::OpsWorks::Stack",
+      "Properties": {
+        "Name": { "Ref": "AWS::StackName" },
+        "ServiceRoleArn": { "arn:aws:iam::086761730243:role/chefworks-servicerole-00-ServiceRole-1OHOD48O1QNRU" },
+        "DefaultInstanceProfileArn": { "arn:aws:iam::086761730243:instance-profile/chefworks-servicerole-00-InstanceProfile-ZE4L9UBFCX1S" },
+        "AgentVersion" : "String",
+        "Attributes" : { "String:String" },
+        "ChefConfiguration" : { "ChefConfiguration" },
+        "CloneAppIds" : [ "String", "..." ],
+        "ClonePermissions" : false,
+        "ConfigurationManager" : { "StackConfigurationManager" },
+        "CustomCookbooksSource" : { "Source" },
+        "CustomJson" : "JSON",
+        "DefaultAvailabilityZone" : "String",
+        "DefaultInstanceProfileArn" : "String",
+        "DefaultOs" : "String",
+        "DefaultRootDeviceType" : "String",
+        "DefaultSshKeyName" : "String",
+        "DefaultSubnetId" : "String",
+        "EcsClusterArn" : "String",
+        "ElasticIps" : [ "ElasticIp", "..." ],
+        "HostnameTheme" : "String",
+        "RdsDbInstances" : [ "RdsDbInstance", "..." ],
+        "ServiceRoleArn" : "String",
+        "SourceStackId" : "String",
+        "UseCustomCookbooks" : false,
+        "UseOpsworksSecurityGroups" : false,
+        "VpcId" : "String"
+      }
+    }
+
+  },
+
+  "Outputs" : {
+    "StackId" : {
+      "Description" : "Stack Id for the newly created OpsWorks stack",
+      "Value" : { "Ref" : "MyStack" }
+    }
+  }
+}

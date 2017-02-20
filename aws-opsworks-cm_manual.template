@@ -1,0 +1,442 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "AWS OpsWorks for Chef Automate stack. Please do not edit/update/delete. Managed by AWS OpsWorks.",
+  "Parameters": {
+    "KeyName": {
+      "Description": "Name of an existing EC2 KeyPair to enable SSH access to the instances",
+      "Type": "String",
+      "Default": ""
+    },
+    "MasterUserPublicKey": {
+      "Description": "Public key for the Chef Server 'pivotal' user",
+      "Type": "String",
+      "NoEcho": true
+    },
+    "MasterUserPassword": {
+      "Description": "Password for the 'admin' user of Chef Delivery. Base64 encoded.",
+      "Type": "String",
+      "NoEcho": true
+    },
+    "LicenseData0": {
+      "Description": "License data",
+      "Type": "String",
+      "NoEcho": true
+    },
+    "LicenseData1": {
+      "Description": "License data",
+      "Type": "String",
+      "NoEcho": true
+    },
+    "HttpsRootCACertificate": {
+      "Description": "Root CA certificate",
+      "Type": "String",
+      "Default": "-----BEGIN CERTIFICATE-----\n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\nR2CExeYjWik=\n-----END CERTIFICATE-----\n"
+    },
+    "HttpsCACertificate": {
+      "Description": "Intermediate CA certificate",
+      "Type": "String",
+      "Default": ""
+    },
+    "HttpsCertificate": {
+      "Description": "Server certificiate",
+      "Type": "String",
+      "Default": ""
+    },
+    "HttpsPrivateKey": {
+      "Description": "PEM encoded private key.",
+      "Type": "String",
+      "NoEcho": true,
+      "Default": ""
+    },
+    "InstanceType": {
+      "Description": "EC2 instance type",
+      "Type": "String",
+      "Default": "c3.large",
+      "AllowedPattern": "^([cm][34]|t2).*"
+    },
+    "InstanceProfile": {
+      "Description": "The EC2 instance profile to use",
+      "Type": "String"
+    },
+    "CreateInstance": {
+      "Description": "Whether or not to create EC2 instance",
+      "Type": "String",
+      "Default": "true",
+      "AllowedValues": ["true", "false"]
+    },
+    "ChefDefaultOrg": {
+      "Description": "The default organization name for the Chef server",
+      "Type": "String",
+      "Default": "default"
+    },
+    "ServerEndpoint": {
+      "Description": "FQDN of the server",
+      "Type": "String"
+    },
+    "SecurityGroupIds": {
+      "Description": "Security Group used by the server",
+      "Type": "CommaDelimitedList",
+      "Default": ""
+    },
+    "SubnetId": {
+      "Description": "Subnet Id of the server",
+      "Type": "String",
+      "Default": ""
+    },
+    "VpcId": {
+      "Description": "VPC Id of the server",
+      "Type": "String",
+      "Default": ""
+    },
+    "ReleaseBucketEndpoint": {
+      "Description": "Bucket endpoint for the tooling release",
+      "Type": "String",
+      "Default": "s3-eu-west-1.amazonaws.com/opsworks-cm-eu-west-1-beta-default-assets"
+    },
+    "BackupS3BucketName": {
+      "Description": "Backup S3 bucket name",
+      "Type": "String"
+    },
+    "BackupS3BasePath": {
+      "Description": "Backup S3 base path",
+      "Type": "String"
+    },
+    "RestoreS3BucketName": {
+      "Description": "Restore backup S3 bucket name",
+      "Type": "String",
+      "Default": ""
+    },
+    "RestoreS3BasePath": {
+      "Description": "Restore backup S3 base path",
+      "Type": "String",
+      "Default": ""
+    },
+    "RestoreBackupName": {
+      "Description": "Restore backup name",
+      "Type": "String",
+      "Default": ""
+    },
+    "SkyKitchenVersion": {
+      "Description": "SkyKitchen version to be installed. Will use the latest version if not set.",
+      "Type": "String"
+    },
+    "CfInitConfigSet": {
+      "Description": "The CfInit configSet to run",
+      "Type": "String",
+      "Default": "install",
+      "AllowedValues": ["noop", "install", "restore"]
+    },
+    "RestoreResetCredentials": {
+      "Description": "Whether to reset credentials during restore",
+      "Type": "String",
+      "Default": "true",
+      "AllowedValues": ["true", "false"]
+    },
+    "RestoreBackupDigest": {
+      "Description": "SHA256 digest to verify backup",
+      "Type": "String",
+      "Default": ""
+    },
+    "AssociatePublicIpAddress": {
+      "Description": "Associate public IP to EC2 instance",
+      "Type": "String",
+      "Default": "true",
+      "AllowedValues": ["true", "false"]
+    }
+  },
+  "Mappings": {
+    "ImageIds" : {
+      "us-east-1" : { "hvm" : "ami-9be6f38c" },
+      "us-west-1" : { "hvm" : "ami-b73d6cd7" },
+      "us-west-2" : { "hvm" : "ami-1e299d7e" },
+      "eu-west-1" : { "hvm" : "ami-c51e3eb6" }
+    }
+  },
+  "Conditions": {
+    "RestoreBackupDigestPresent": {"Fn::Not": [{"Fn::Equals": [{"Ref" : "RestoreBackupDigest"}, ""]}]},
+    "CreateInstance": {"Fn::Equals": [{"Ref" : "CreateInstance"}, "true"]},
+    "CreateSecurityGroup" : {"Fn::And": [
+      {"Condition": "VpcIdPresent"},
+      {"Fn::Not": [{"Condition": "SecurityGroupIdsPresent"}]}
+    ]},
+    "KeyNamePresent": {"Fn::Not": [{"Fn::Equals": [{"Ref" : "KeyName"}, ""]}]},
+    "SecurityGroupIdsPresent" : {"Fn::Not": [{"Fn::Equals": [{ "Fn::Select": [0, {"Ref" : "SecurityGroupIds"}]}, ""]}]},
+    "SubnetIdPresent" : {"Fn::Not": [{"Fn::Equals": [{"Ref" : "SubnetId"}, ""]}]},
+    "VpcIdPresent" : {"Fn::Not": [{"Fn::Equals": [{"Ref" : "VpcId"}, ""]}]},
+    "AssociatePublicIpAddress" : {"Fn::Equals": [{"Ref" : "AssociatePublicIpAddress"}, "true"]},
+    "CreateInstanceAndAssociatePublicIp" : {"Fn::And": [
+      {"Condition": "AssociatePublicIpAddress"},
+      {"Condition": "CreateInstance"}
+    ]}
+  },
+  "Resources": {
+    "SecurityGroup": {
+      "Type" : "AWS::EC2::SecurityGroup",
+      "Condition": "CreateSecurityGroup",
+      "Properties" : {
+        "GroupDescription" : "Server security group. Managed by OpsWorks. Please do not edit/update/delete.",
+        "VpcId" : { "Ref": "VpcId" },
+        "SecurityGroupIngress": {
+          "Fn::If": ["KeyNamePresent",
+                     [{ "IpProtocol": "tcp",
+                         "FromPort": "443",
+                         "ToPort": "443",
+                         "CidrIp": "0.0.0.0/0" },
+                       { "IpProtocol": "tcp",
+                         "FromPort": "22",
+                         "ToPort": "22",
+                         "CidrIp": "0.0.0.0/0" }
+                     ],[{
+                         "IpProtocol": "tcp",
+                         "FromPort": "443",
+                         "ToPort": "443",
+                         "CidrIp": "0.0.0.0/0"
+                       }]]}
+      }
+    },
+    "EC2Instance": {
+      "Type": "AWS::EC2::Instance",
+      "Condition": "CreateInstance",
+      "Metadata" : {
+        "AWS::CloudFormation::Init": {
+          "configSets": {
+            "install": ["cm_release", "cm_install", "cm_config", "cm_bootstrap", "cm_apply_security_updates", "cm_cleanup"],
+            "restore": ["cm_release", "cm_install", "cm_config", "cm_restore", "cm_apply_security_updates", "cm_cleanup"],
+            "noop": []
+          },
+          "cm_release" : {
+            "commands": {
+              "01_install_opsworks_cm_release": {
+                "command":
+                    { "Fn::Join" : ["", [
+                      "rpm -i --replacepkgs https://", { "Ref": "ReleaseBucketEndpoint" }, "/main/amazon-linux/opsworks-cm-release-",
+                      { "Ref": "SkyKitchenVersion" } , "-1.noarch.rpm"
+                    ]] }
+              },
+              "02_update_yum_cache_with_retries": {
+                "command": "for _i in `seq 1 5`; do yum makecache && break || sleep 2; done"
+              }
+            }
+          },
+          "cm_install": {
+            "packages": {
+              "yum": {
+                "chef-server-core": [],
+                "opsworks-cm": []
+              }
+            },
+            "commands": {
+              "01_start_ssm": {
+                "command": "/sbin/start amazon-ssm-agent",
+                "ignoreErrors": "true"
+              }
+            }
+          },
+          "cm_config": {
+            "commands": {
+              "01_key_copy": {
+                "command": { "Fn::Join" : [ "", ["echo -e '", { "Ref": "MasterUserPublicKey" }, "'> /tmp/new_public_key.pub"]]}
+              },
+              "02_license_copy_0": {
+                "command": { "Fn::Join" : [ "", ["umask 077 && echo -n -e '", { "Ref": "LicenseData0" }, "'> /tmp/license"]]}
+              },
+              "02_license_copy_1": {
+                "command": { "Fn::Join" : [ "", ["echo -n -e '", { "Ref": "LicenseData1" }, "'>> /tmp/license"]]}
+              },
+              "03_certificate_copy_rootca": {
+                "command": { "Fn::Join" : [ "", ["echo -e '", { "Ref": "HttpsRootCACertificate" }, "'> /tmp/rootca.pem"]]}
+              },
+              "03_certificate_copy_ca": {
+                "command": { "Fn::Join" : [ "", ["echo -e '", { "Ref": "HttpsCACertificate" }, "'> /tmp/ca.pem"]]}
+              },
+              "03_certificate_copy_certificate": {
+                "command": { "Fn::Join" : [ "", ["echo -e '", { "Ref": "HttpsCertificate" }, "'> /tmp/certificate.pem"]]}
+              },
+              "03_certificate_copy_key": {
+                "command": { "Fn::Join" : [ "", ["umask 077 && echo -e '", { "Ref": "HttpsPrivateKey" }, "'> /tmp/key.pem"]]}
+              }
+            }
+          },
+          "cm_bootstrap": {
+            "commands": {
+              "01_opsworks_cm_bootstrap": {
+                "command": { "Fn::Join": [" ", [
+                  "/opt/aws/opsworks-cm/bin/manage.rb -c chef_bootstrap",
+                  "--default-org \"$DEFAULT_ORG\"",
+                  "--server-endpoint \"$SERVER_ENDPOINT\"",
+                  "--pub-key-file /tmp/new_public_key.pub",
+                  "--admin-password \"$MASTER_USER_PASSWORD\"",
+                  "--backup-s3-bucket-name \"$BACKUP_S3_BUCKET_NAME\"",
+                  "--backup-s3-region \"$BACKUP_S3_REGION\"",
+                  "--backup-s3-base-path \"$BACKUP_S3_BASE_PATH\"",
+                  "--https-root-ca-certificate /tmp/rootca.pem",
+                  "--https-ca-certificate /tmp/ca.pem",
+                  "--https-certificate /tmp/certificate.pem",
+                  "--https-private-key /tmp/key.pem",
+                  "--license-file /tmp/license"
+                ]]},
+                "env": {
+                  "BACKUP_S3_BASE_PATH": { "Ref": "BackupS3BasePath" },
+                  "BACKUP_S3_BUCKET_NAME": { "Ref": "BackupS3BucketName" },
+                  "BACKUP_S3_REGION": { "Ref": "AWS::Region" },
+                  "DEFAULT_ORG": { "Ref": "ChefDefaultOrg" },
+                  "MASTER_USER_PASSWORD": { "Ref": "MasterUserPassword" },
+                  "HOME": "/tmp",
+                  "PATH": "/sbin:/bin:/usr/sbin:/usr/bin:/opt/aws/bin",
+                  "SERVER_ENDPOINT": { "Ref": "ServerEndpoint" }
+                }
+              }
+            }
+          },
+          "cm_apply_security_updates": {
+            "commands": {
+              "01_opsworks_cm_security_updates": {
+                "command": "/opt/aws/opsworks-cm/bin/manage.rb -c update_os_security --reboot-after-update"
+              }
+            }
+          },
+          "cm_restore": {
+            "commands": {
+              "01_opsworks_cm_restore": {
+                "command": { "Fn::Join": [" ", [
+                  "/opt/aws/opsworks-cm/bin/manage.rb -c chef_restore_backup",
+                  "--admin-password \"$MASTER_USER_PASSWORD\"",
+                  "--backup-name \"$BACKUP_NAME\"",
+                  "--backup-s3-base-path \"$BACKUP_S3_BASE_PATH\"",
+                  "--backup-s3-bucket-name \"$BACKUP_S3_BUCKET_NAME\"",
+                  "--backup-s3-region \"$BACKUP_S3_REGION\"",
+                  "--https-root-ca-certificate /tmp/rootca.pem",
+                  "--https-ca-certificate /tmp/ca.pem",
+                  "--https-certificate /tmp/certificate.pem",
+                  "--https-private-key /tmp/key.pem",
+                  "--pub-key-file /tmp/new_public_key.pub",
+                  "--reset-credentials \"$RESET_CREDENTIALS\"",
+                  "--restore-s3-base-path \"$RESTORE_BASE_PATH\"",
+                  "--restore-s3-bucket-name \"$RESTORE_S3_BUCKET_NAME\"",
+                  {
+                    "Fn::If": [
+                      "RestoreBackupDigestPresent",
+                      "--backup-digest \"$BACKUP_DIGEST\"",
+                      ""]
+                  },
+                  "--server-endpoint \"$SERVER_ENDPOINT\""
+                ]]},
+                "env" : {
+                  "BACKUP_DIGEST": { "Ref": "RestoreBackupDigest" },
+                  "BACKUP_NAME": { "Ref": "RestoreBackupName" },
+                  "BACKUP_S3_BASE_PATH": { "Ref": "BackupS3BasePath" },
+                  "BACKUP_S3_BUCKET_NAME": { "Ref": "BackupS3BucketName" },
+                  "BACKUP_S3_REGION": { "Ref": "AWS::Region" },
+                  "MASTER_USER_PASSWORD": { "Ref": "MasterUserPassword" },
+                  "RESET_CREDENTIALS": { "Ref": "RestoreResetCredentials" },
+                  "RESTORE_BASE_PATH": { "Ref": "RestoreS3BasePath" },
+                  "RESTORE_S3_BUCKET_NAME": { "Ref": "RestoreS3BucketName" },
+                  "SERVER_ENDPOINT": { "Ref": "ServerEndpoint" },
+                  "HOME": "/tmp",
+                  "PATH": "/sbin:/bin:/usr/sbin:/usr/bin:/opt/aws/bin"
+                }
+              }
+            }
+          },
+          "cm_cleanup": {
+            "commands": {
+              "01_delete_tempfiles": {
+                "command": { "Fn::Join": [" ", [
+                  "rm -f",
+                  "/tmp/new_public_key.pub",
+                  "/tmp/rootca.pem",
+                  "/tmp/ca.pem",
+                  "/tmp/certificate.pem",
+                  "/tmp/key.pem",
+                  "/tmp/license"
+                ]]}
+              }
+            }
+          }
+        }
+      },
+      "Properties": {
+        "InstanceType": { "Ref": "InstanceType" },
+        "IamInstanceProfile": { "Ref": "InstanceProfile" },
+        "ImageId": { "Fn::FindInMap" : [ "ImageIds", { "Ref" : "AWS::Region" }, "hvm"] },
+        "KeyName": {
+          "Fn::If": [
+            "KeyNamePresent",
+            { "Ref": "KeyName" },
+            { "Ref": "AWS::NoValue" }
+          ]
+        },
+        "BlockDeviceMappings": [
+          {
+            "DeviceName": "/dev/xvda",
+            "Ebs": {
+              "VolumeType": "gp2",
+              "VolumeSize": "120"
+            }
+          }
+        ],
+        "Tags": [{"Key": "Name", "Value": { "Ref" : "AWS::StackName" }}],
+        "UserData" : { "Fn::Base64" : { "Fn::Join" : ["", [
+                       "#!/bin/bash -x\n",
+
+                       "yum update -y aws-cfn-bootstrap\n",
+
+                       "/opt/aws/bin/cfn-init -v ",
+                       "         --stack ", { "Ref" : "AWS::StackName" },
+                       "         --resource EC2Instance ",
+                       "         --configsets ", { "Ref" : "CfInitConfigSet" },
+                       "         --region ", { "Ref" : "AWS::Region" }, "\n",
+
+                       "/opt/aws/bin/cfn-signal -e $? ",
+                       "         --stack ", { "Ref" : "AWS::StackName" },
+                       "         --resource EC2Instance ",
+                       "         --region ", { "Ref" : "AWS::Region" }, "\n"
+        ]]}},
+        "NetworkInterfaces": [
+          { "DeviceIndex": 0,
+            "AssociatePublicIpAddress": {"Fn::If": ["AssociatePublicIpAddress", true, false]},
+            "SubnetId": {"Fn::If": ["SubnetIdPresent", { "Ref": "SubnetId" }, { "Ref": "AWS::NoValue" }]},
+            "GroupSet": {"Fn::If": ["SecurityGroupIdsPresent",
+                                    { "Ref": "SecurityGroupIds" },
+                                    { "Fn::If": ["CreateSecurityGroup", [{"Ref": "SecurityGroup"}], {"Ref": "AWS::NoValue"}] }]
+                        }
+          }
+        ]
+      },
+      "CreationPolicy" : {
+        "ResourceSignal" : {
+          "Timeout" : "PT30M"
+        }
+      }
+    },
+    "EIP": {
+      "Type": "AWS::EC2::EIP",
+      "Condition": "AssociatePublicIpAddress",
+      "Properties": {
+        "Domain": "vpc"
+      }
+    },
+    "EIPAssociation": {
+      "Type" : "AWS::EC2::EIPAssociation",
+      "Condition": "CreateInstanceAndAssociatePublicIp",
+      "Properties" : {
+        "InstanceId" : { "Ref" : "EC2Instance" },
+        "AllocationId" : {"Fn::GetAtt" : [ "EIP", "AllocationId" ]}
+      }
+    }
+  },
+  "Outputs": {
+    "ServerAddress": {
+      "Description": "Server address",
+      "Condition": "CreateInstanceAndAssociatePublicIp",
+      "Value": {"Fn::GetAtt" : [ "EC2Instance", "PublicDnsName" ]}
+    },
+    "InstanceId": {
+      "Description": "EC2 instance ID",
+      "Condition": "CreateInstance",
+      "Value": {
+        "Ref": "EC2Instance"
+      }
+    }
+  }
+}
