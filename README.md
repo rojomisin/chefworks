@@ -9,8 +9,10 @@ spin up chef automate stack using `awscli opsworks-cm` available in
  - aws creds to do `aws configure --profile MyProfileWest`
 
 ### create a keypair
-`aws ec2 create-key-pair --key-name chefworks-vpc-00 --output text --query 'KeyMaterial' --profile SPSDevWest2 >chefworks-vpc-00.pem`
-`aws ec2 create-key-pair --key-name chefworks-server-00 --output text --query 'KeyMaterial' --profile SPSDevWest2 >chefworks-server-00.pem`
+```
+aws ec2 create-key-pair --key-name chefworks-vpc-00 --output text --query 'KeyMaterial' --profile SPSDevWest2 >chefworks-vpc-00.pem
+aws ec2 create-key-pair --key-name chefworks-server-00 --output text --query 'KeyMaterial' --profile SPSDevWest2 >chefworks-server-00.pem
+```
 
 ### spin up a base vpc in us-west-2
 ```
