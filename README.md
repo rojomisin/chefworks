@@ -62,8 +62,8 @@ aws iam list-instance-profiles --region us-west-2 | jq '.InstanceProfiles[].Arn
 aws opsworks-cm create-server \
    --server-name chefworks-00 \
    --region us-west-2 \
-   --instance-profile-arn arn:aws:iam::086761730243:instance-profile/chefworks-servicerole-00-InstanceProfile-ZE4L9UBFCX1S \
-   --service-role-arn arn:aws:iam::086761730243:role/chefworks-servicerole-00-ServiceRole-1OHOD48O1QNRU \
+   --instance-profile-arn arn:aws:iam::0123456789012:instance-profile/chefworks-servicerole-00-InstanceProfile-ZE4L9UBFCX1S \
+   --service-role-arn arn:aws:iam::0123456789012:role/chefworks-servicerole-00-ServiceRole-1OHOD48O1QNRU \
    --profile SPSDevWest2 \
    --instance-type m3.large \
    --engine Chef \
